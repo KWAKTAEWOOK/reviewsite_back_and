@@ -71,4 +71,17 @@ public class UserController {
         return ResponseEntity.ok(userService.checkEmailDuplicate(email));
     }
 
+    @PostMapping("/modify")
+    public boolean modifyNickname(@RequestBody User user) {
+        userService.modifynickname(user);
+        return true;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public User deleteUser(@PathVariable Long id, User user) {
+        User deleteUser = userService.deleteById(id);
+
+        return deleteUser;
+    }
+
 }
